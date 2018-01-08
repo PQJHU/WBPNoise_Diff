@@ -37,13 +37,13 @@ def plot_acf_pacf(signal, lags=None, name=None):
     plt.show()
 
 
-def plot_periodgram(signal,color=None, name=None):
+def plot_periodgram(signal, color=None, name=None):
     plt.figure(figsize=(20, 5))
-    plt.subplot(2,1,1)
+    plt.subplot(2, 1, 1)
     plt.plot(signal, c=color, linewidth=1.0)
     plt.xlabel('Time, t', fontsize=16)
     plt.ylabel('intensity', fontsize=16)
-    plt.subplot(2,1,2)
+    plt.subplot(2, 1, 2)
     spectrum_signal = periodogram(signal)
     plt.plot(spectrum_signal[0], spectrum_signal[1], 'red')
     plt.xlabel('Freq', fontsize=16)
@@ -96,9 +96,12 @@ pink_acf_pacf = plot_acf_pacf(signal=pink_noise_signal, name='ACF_PN')
 
 # plot periodogram of signals
 hbo_specgram = plot_periodgram(signal=hbo_signal, name='FD_HBO', color='k')
-white_specgram = plot_periodgram(signal=extract_signal(file_name='white_noise.wav', num_frames=441000), name='FD_WN', color='k')
-blue_specgram = plot_periodgram(signal=extract_signal(file_name='blue_noise.wav', num_frames=441000), name='FD_BN', color='b')
-pink_specgram = plot_periodgram(signal=extract_signal(file_name='pink_noise.wav', num_frames=441000), name='FD_PN', color='m')
+white_specgram = plot_periodgram(signal=extract_signal(file_name='white_noise.wav', num_frames=441000), name='FD_WN',
+                                 color='k')
+blue_specgram = plot_periodgram(signal=extract_signal(file_name='blue_noise.wav', num_frames=441000), name='FD_BN',
+                                color='b')
+pink_specgram = plot_periodgram(signal=extract_signal(file_name='pink_noise.wav', num_frames=441000), name='FD_PN',
+                                color='m')
 plot_periodgram(plot_decomposition(), name='FD_SinFunc')
 
 # adf test
@@ -115,5 +118,3 @@ pink_noise_norm = normaltest(pink_noise_signal)
 plt.hist(white_noise_signal, bins=50)
 plt.hist(blue_noise_signal, bins=50)
 plt.hist(pink_noise_signal, bins=50)
-
-
